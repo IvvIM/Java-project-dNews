@@ -1,23 +1,22 @@
 package com.dnews.demo.domain;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Collection;
-
-@Document
-public class NewsEntity {
+@Document(collection = "News")
+public class News {
 
     @Id
-    private long id;
+    private ObjectId id = new ObjectId();
     private String url;
     private String photoURL;
     private String title;
     private String description;
 
-    public NewsEntity() {}
+    public News() {}
 
-    public NewsEntity(String url, String photoURL, String title, String description)
+    public News(String url, String photoURL, String title, String description)
     {
         this.url = url;
         this.photoURL = photoURL;
@@ -25,12 +24,8 @@ public class NewsEntity {
         this.description = description;
     }
 
-    public long getId() {
+    public ObjectId getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getUrl() {
